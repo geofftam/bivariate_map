@@ -2,7 +2,7 @@
 title: "Bivariate Choropleth Map"
 author: "Geoff"
 date: '2022-12-17'
-output: github_document
+output: html_document
 ---
 
 # Introduction
@@ -62,13 +62,13 @@ theme_map <- function(...) {
 The final bivariate map will visualize population and elevation at the woreda level (third administrative division) in Ethiopia. [Administrative boundaries](https://data.humdata.org/dataset/cod-ab-eth) and [population](https://data.humdata.org/dataset/cod-ps-eth) figures come from the Humanitarian Data Exchange and are maintained by Ethiopia's Central Statistics Agency. The elevation data comes from the [HydroSHEDS](https://www.hydrosheds.org/hydrosheds-core-downloads) digital elevation model at the 30 arc seconds resolution. 
 ```{r}
 # Elevation data from HydroSHEDS
-dem <- raster("./hyd_af_dem_30s/hyd_af_dem_30s.tif")
+dem <- raster("./data/hyd_af_dem_30s/hyd_af_dem_30s.tif")
 
 # Administrative boundaries off of humdataX
-eth <- read_sf("./eth_adm_csa_bofedb_2021_shp/eth_admbnda_adm3_csa_bofedb_2021.shp")
+eth <- read_sf("./data/eth_adm_csa_bofedb_2021_shp/eth_admbnda_adm3_csa_bofedb_2021.shp")
 
 # population from humdataX
-pop <- read.csv("./eth_admpop_adm3_2022_v2.csv")
+pop <- read.csv("./data/eth_admpop_adm3_2022_v2.csv")
 ```
 
 To link our population data to our boundaries shapefile, we can execute a join using the "ADM3_PCODE" variable as a common key. 
